@@ -1,32 +1,38 @@
-.ti0{
-    position: absolute;
-    left: 50px;
-    font: 15px "Times New Roman" italic;
+.ti0 {
+    position : absolute;
+    left : 50px;
+    font : 15px "Times New Roman" italic;
 }
-.ti1{
-    position: absolute;
-    left: 150px;
+.ti1 {
+    position : absolute;
+    left : 150px;
 }
-#ti0_0,#ti1_0{ top: 50px;}
-#ti0_1,#ti1_1{ top:100px;}
-#ti0_2,#ti1_2{ top:150px;}
-#ti0_3,#ti1_3{ top:200px;}
 
-#tiBut{
+#ti0_0, #ti1_0 { top : 50px;}
+#ti0_1, #ti1_1 { top : 100px;}
+#ti0_2, #ti1_2 { top : 150px;}
+#ti0_3, #ti1_3 { top : 200px;}
+
+#tiBut {
+    position : absolute;
+    left : 400px;
+    top : 400px;
+}
+textarea {
+    height : 200px;
+    resize : none;
+}
+#taskPanel {
+    position : absolute;
+    width : 500px;
+    height : 500px;
+    left : 50%;
+    top : 50%;
+    margin-left : -250px;
+    margin-top : -250px;
+}
+#delTask{
     position: absolute;
     left: 400px;
-    top: 400px;
-}
-textarea{
-    height: 200px;
-    resize: none;
-}
-#taskPanel{
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 50%;
-    top: 50%;
-    margin-left: -250px;
-    margin-top: -250px;
+    top: 5px;
 }

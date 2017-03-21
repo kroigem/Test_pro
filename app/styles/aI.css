@@ -1,32 +1,32 @@
 .ai0{
-    position: absolute;
-    left: 50px;
-    font: 15px "Times New Roman" italic;
+    position : absolute;
+    left : 50px;
+    font : 15px "Times New Roman" italic;
 }
 .ai1{
-    position: absolute;
-    left: 150px;
+    position : absolute;
+    left : 150px;
 }
-#ai0_0,#ai1_0{ top: 50px;}
-#ai0_1,#ai1_1{ top:100px;}
-#ai0_2,#ai1_2{ top:150px;}
-#ai0_3,#ai1_3{ top:200px;}
+#ai0_0, #ai1_0 { top : 50px; }
+#ai0_1, #ai1_1 { top :100px; }
+#ai0_2, #ai1_2 { top :150px; }
+#ai0_3, #ai1_3 { top :200px; }
 
 #aiBut{
-    position: absolute;
-    left: 400px;
-    top: 400px;
+    position : absolute;
+    left : 400px;
+    top : 400px;
 }
 textarea{
-    height: 200px;
-    resize: none;
+    height : 200px;
+    resize : none;
 }
 #addPanel{
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 50%;
-    top: 50%;
-    margin-left: -250px;
-    margin-top: -250px;
+    position : absolute;
+    width : 500px;
+    height : 500px;
+    left : 50%;
+    top : 50%;
+    margin-left : -250px;
+    margin-top : -250px;
 }

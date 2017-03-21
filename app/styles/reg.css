@@ -1,0 +1,16 @@
+#regPanel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220px;
+    height: 250px;
+    margin-left: -150px;
+    margin-top: -200px;   
+}
+#newRegBut {
+    position: absolute;
+    width: 120px;
+    left: 50%;
+    margin-left: -60px;
+    top: 210px;
+}
