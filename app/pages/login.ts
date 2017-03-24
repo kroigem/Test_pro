@@ -41,6 +41,7 @@ export class LoginPage {
     };
 
   toReg() {
+    this._mService.tryToReg = true;
     this.router.navigateByUrl('/regPage');  
   }  
 

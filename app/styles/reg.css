@@ -10,7 +10,17 @@
 #newRegBut {
     position: absolute;
     width: 120px;
-    left: 50%;
+    left: 73%;
     margin-left: -60px;
     top: 210px;
+}
+#regMessage{
+    position: absolute;
+    width: 120px;
+    top: -30px;
+    left: 50%;
+    margin-left: -60px;
+    text-align: center;
+    background-color: lightpink;
+    border-radius: 5px;
 }

@@ -45,3 +45,9 @@ tr :nth-child(2n) {
 header{
   height: 50px;
 }
+#userLogName{
+  position: absolute;
+  left: 20%;
+  top: 25px;
+  font: 20px "Times New Roman";
+}

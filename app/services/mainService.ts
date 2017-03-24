@@ -12,6 +12,8 @@ export class MainService {
 
     public logInUserName : string = "";
 
+    public tryToReg : boolean = false;
+    
     constructor() {        
         this.allowLogin[0]    = "admin";
         this.allowPassword[0] = "admin";               

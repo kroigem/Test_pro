@@ -61,6 +61,7 @@ export class MainPage implements OnInit {
 
     logOut() {
         this.userName = "";
+	this.tryToReg = false;
         this.router.navigateByUrl('/')
     };
 }

@@ -1,4 +1,4 @@
-import { Component,OnChanges } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MainService } from '../services/mainService';
@@ -7,41 +7,63 @@ import { MainService } from '../services/mainService';
     selector : 'page-login',
     template : `
                 <div id="regPanel">
+                    <p id="regMessage"> {{errMessage}} </p>
                     <p id="regNameLabel"> User name </p>
-                    <input type="text" id="regName" required [(ngModel)]="regName">
+                    <input type="text" id="regName" required [(ngModel)]="regName" (click)="rnChange()">
                     <p id="regPassLabel"> User password </p>
-                    <input type="password" id="regPass" required [(ngModel)]="regPass"> 
+                    <input type="password" id="regPass" required [(ngModel)]="regPass" (click)="rnChange()"> 
                     <p id="regPassLabel2"> Repeat password </p>
-                    <input type="password" id="regPass2" required [(ngModel)]="regPass2">
-                    <button class="btn btn-info" id="newRegBut" (click)="tryReg()"> RegMe </button>
+                    <input type="password" id="regPass2" required [(ngModel)]="regPass2" (click)="rnChange()">
+                    <button class="btn btn-info" id="newRegBut" (click)="tryReg()" [disabled] = "!regName"> RegMe </button>
+                    <button class="btn btn-primary" (click) = "back()">Back</button>
                 </div>
               `,
     styleUrls : ['./app/styles/reg.css']          
 })
 
-export class Registaration implements OnChanges {
+export class Registaration implements OnInit {
   
-    regName  : string;
-    regPass  : string;
-    regPass2 : string;
-    
-    ngOnChanges() {};
-    
-    constructor (private _mService : MainService, 
-                 private router : Router
-     ) {};
+    regName    : string;
+    regPass    : string;
+    regPass2   : string;
+    errMessage : string;
+   
+   
+    passEqual  :boolean = false;
 
+
+    constructor (private _mService : MainService, 
+                    private router : Router
+    ) {};
+
+    ngOnInit() {
+         if (this._mService.tryToReg == false){
+            this.router.navigateByUrl('/');
+        }
+    };
+ 
     tryReg() {        
-        if (this.regPass == this.regPass2){                         
+        if (this.regPass == this.regPass2){      
+            this.passEqual = true;                   
             if (this._mService.allowLogin.indexOf( this.regName) == -1){                    
                     this._mService.allowLogin.push( this.regName);
-                    this._mService.allowPassword.push( this.regPass);
-                    alert ( "Registaration OK!");
+                    this._mService.allowPassword.push( this.regPass);                    
                     this.router.navigateByUrl( '/mainPage');
             }
             else {
-                alert ( "Registaration failed");    
+                this.errMessage = "Login isnt allowed";    
             }
         }
+        else {
+             this.errMessage = "Pass retype wrong";    
+        }
+    };
+
+    back() {
+        this.router.navigateByUrl('/');
+    };
+
+    rnChange() {
+        this.errMessage = null;
     };
 }
