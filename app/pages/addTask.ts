@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
             <p id="ai0_3" class="ai0"> TaskInfo: </p>
                       <textarea id="ai1_3" class="ai1" [(ngModel)]="addInfo"></textarea>
             <button class="btn btn-alert" id="aiBut" (click)="aiClick()" [disabled]="!addName"> Add task </button>
+            <button class="btn btn-info"  id="aiBack" (click)="aiBack()"> Back </button>
           </div>
     `,
     styleUrls : ['/styles/aI.css']  
@@ -45,4 +46,7 @@ export class addInf implements OnInit {
         this._mService.nextIndex ++;  
         this.router.navigateByUrl('/mainPage');                                       
   };  
+    aiBack() {
+    this.router.navigateByUrl('/mainPage');
+  };
 };

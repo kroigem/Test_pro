@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   selector : 'page-task',
   template : `
            <div id="taskPanel">    
-              <button class="btn btn-danger" id="delTask" (click)="delTask()"> Delete task </button>
+              <button class="btn btn-danger" id="delTask" (click)="delTask()" title="delete task"> X </button>
               <p id="ti0_0" class="ti0"> TaskName: </p>
                         <p id="ti1_0" class="ti1" readonly> {{taskName}} </p>
               <p id="ti0_1" class="ti0"> TaskDate: </p>
@@ -17,8 +17,7 @@ import { Router } from '@angular/router';
                         <input type="checkbox" id="ti1_2" class="ti1" [checked]="taskActive" [disabled] = "true" >
               <p id="ti0_3" class="ti0"> TaskInfo: </p>
                         <textarea id="ti1_3" class="ti1" readonly> {{taskInfo}} </textarea>
-              <button class="btn btn-alert" id="tiBut" (click)="tiClick()"> OK </button>
-              <button class="btn btn-info"  id="tIBack" (click)="tiBack()"> Back </button>
+              <button class="btn btn-alert" id="tiBut" (click)="tiClick()"> SAVE </button>              
             </div>
     `,
     styleUrls : ['/styles/taskI.css']  
@@ -32,6 +31,7 @@ export class taskInf implements OnInit{
   taskInfo   : string  = "";
 
   tempS : string[];
+
 
   ngOnInit() {     
       if (this._mService.logInUserName == ""){
@@ -52,10 +52,8 @@ export class taskInf implements OnInit{
 
   delTask() {    
     this._mService.tasks[this._mService.taskInfoId/1] = "none";
+    this._mService.taskCount -= 1;
     this.router.navigateByUrl('/mainPage');    
   };
 
-  tiBack() {
-    this.router.navigateByUrl('/mainPage');
-  };
 };

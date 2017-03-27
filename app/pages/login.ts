@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MainService } from '../services/mainService';
+import { LoginService } from '../services/loginService';
 
 @Component({
   selector : 'page-login',
@@ -18,27 +19,26 @@ import { MainService } from '../services/mainService';
 })
 export class LoginPage {
   constructor(private router : Router, 
-              private _mService : MainService 
+              private _mService : MainService,
+              private _lService : LoginService
   ) { }; 
   userLogin : string;
   userPassword : string;
 
   loginError : string;
   
-  toLog() {  
-    if (this._mService.allowLogin.indexOf(this.userLogin) != -1 ) {
-         if (this._mService.allowPassword[ this._mService.allowLogin.indexOf(this.userLogin) ] == this.userPassword) {
-          this.router.navigateByUrl('/mainPage');
-          this._mService.logInUserName = this.userLogin;
-        }   
-        else {
+  toLog() { 
+    if (this._lService.toLog(this.userLogin,this.userPassword)/1 > 1){
+            this._mService.logInUserName = this.userLogin;
+            this.router.navigateByUrl('/mainPage');  
+    }
+    else if (this._lService.toLog(this.userLogin,this.userPassword)/1==1){
           this.loginError = "Wrong password";
-        };
-      }
-      else {
-        this.loginError = "No such userName";
-      };
-    };
+        }
+   else {
+        this.loginError = "Wrong user";
+     }     
+   };
 
   toReg() {
     this._mService.tryToReg = true;

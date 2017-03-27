@@ -32,22 +32,32 @@ tr :nth-child(2n) {
 .tableHead {
     font-size : 24px;
 }
+
+#addTask{
+  position : fixed;
+  left : 90%;
+  top : 85%;
+  z-index: 100;
+}
+header{
+  height: 50px;
+}
+
+#userLogName{
+  position: absolute;
+  left: 65%;
+  top: 25px;
+  font: 20px "Times New Roman";
+}
 #logOut{
   position : absolute;
   left : 80%;
   top : 20px;
 }
-#addTask{
-  position : absolute;
-  left : 5%;
-  top : 60px;
-}
-header{
-  height: 50px;
-}
-#userLogName{
+#faBut{
   position: absolute;
-  left: 20%;
-  top: 25px;
-  font: 20px "Times New Roman";
+  width: 300px;
+  height: 50px;
+  left: 10px;
+  top: 10px;
 }

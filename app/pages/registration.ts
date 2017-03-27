@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MainService } from '../services/mainService';
+import { LoginService } from '../services/loginService';
 
 @Component({
     selector : 'page-login',
@@ -32,7 +33,8 @@ export class Registaration implements OnInit {
     passEqual  :boolean = false;
 
 
-    constructor (private _mService : MainService, 
+    constructor (private _lService : LoginService, 
+                 private _mService : MainService, 
                     private router : Router
     ) {};
 
@@ -45,9 +47,9 @@ export class Registaration implements OnInit {
     tryReg() {        
         if (this.regPass == this.regPass2){      
             this.passEqual = true;                   
-            if (this._mService.allowLogin.indexOf( this.regName) == -1){                    
-                    this._mService.allowLogin.push( this.regName);
-                    this._mService.allowPassword.push( this.regPass);                    
+            if (this._lService.allowLogin.indexOf( this.regName) == -1){                    
+                    this._lService.allowLogin.push( this.regName);
+                    this._lService.allowPassword.push( this.regPass);                    
                     this.router.navigateByUrl( '/mainPage');
             }
             else {
