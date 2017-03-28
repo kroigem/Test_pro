@@ -12,7 +12,7 @@ import { LoginService } from '../services/loginService';
       <input type="password" id="loginPass" required placeholder="Your password" [(ngModel)]="userPassword" (click)="lNChange()" />     
       <p id="errMessage">{{loginError}}</p>   
       <button class="btn btn-good" id="loginBut" (click)="toLog()">Login</button>
-      <button class="btn btn-warning" id="regBut" (click)="toReg()">Reg me</button> 
+      <button class="btn btn-warning" id="regBut" (click)="toReg()" [disabled] = "true">Reg me</button> 
     </div>                      
     `,
     styleUrls : ['./app/styles/login.css']    

@@ -44,7 +44,7 @@ export class Registaration implements OnInit {
         }
     };
  
-    tryReg() {        
+   /* tryReg() {        
         if (this.regPass == this.regPass2){      
             this.passEqual = true;                   
             if (this._lService.allowLogin.indexOf( this.regName) == -1){                    
@@ -60,7 +60,7 @@ export class Registaration implements OnInit {
              this.errMessage = "Pass retype wrong";    
         }
     };
-
+*/
     back() {
         this.router.navigateByUrl('/');
     };

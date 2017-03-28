@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
                       <input type="checkbox" id="ai1_2" class="ai1" [(ngModel)]="addActive"/>
             <p id="ai0_3" class="ai0"> TaskInfo: </p>
                       <textarea id="ai1_3" class="ai1" [(ngModel)]="addInfo"></textarea>
-            <button class="btn btn-alert" id="aiBut" (click)="aiClick()" [disabled]="!addName"> Add task </button>
-            <button class="btn btn-info"  id="aiBack" (click)="aiBack()"> Back </button>
+            <button class="btn btn-alert" id="aiBut" (click)="aiClick()" [disabled]="!addName"> Save </button>
+            <button class="btn btn-info"  id="aiBack" (click)="aiBack()"> Cancel </button>
           </div>
     `,
     styleUrls : ['/styles/aI.css']  

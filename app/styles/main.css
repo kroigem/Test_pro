@@ -61,3 +61,12 @@ header{
   left: 10px;
   top: 10px;
 }
+#delModal{
+  position: absolute;
+  left: 50%;
+  width: 105px;
+  margin-left: -75px;
+  top:50%;
+  background-color: lightcyan;
+  border-radius: 9px;
+}

@@ -14,7 +14,7 @@ import { LoginService } from '../services/loginService';
             </header>
             <button class="btn btn-success" (click)="addTask()" id="addTask" *ngIf="anyTask"> Add task </button>
             <table>
-            <tr ><th class="tableHead"> TaskName </th>
+            <tr><th class="tableHead"> TaskName </th>
                  <th class="tableHead"> Date </th>
                  <th class="tableHead"> isActive </th>
                  <th class="tableHead"> Info </th>
@@ -27,14 +27,20 @@ import { LoginService } from '../services/loginService';
                 </div>
             </tr>
 
-            <tr *ngFor="let c of tasksDash">
+            <tr *ngFor="let c of tasksDash" (click)="trClick($event)" id="tr+{{c[0]}}">
               <th> {{c[1]}} </th>
               <th> {{c[2]}} </th>
-              <th><input type="checkbox" checked={{c[3]}}/></th>
+              <th><input type="checkbox" checked={{c[3]}} [disabled] = "true"/></th>
               <th><button class="btn btn-info" (click)="infoClick($event)" id="{{c[0]}}"> Info </button></th>
-              <th><button class="btn btn-danger" title="delete task" (click)="infoDel($event)" id="d+{{c[0]}}"> X </button></th>
+              <th><button class="btn btn-danger" title="delete task" (click)="showModal($event)" id="d+{{c[0]}}"> X </button></th>
             </tr>               
             
+            <div *ngIf="isShowModal" id="delModal">
+                <p> Are you sure ? </p>
+                <button class="btn btn-danger" (click)="infoDel()"> YES </button>
+                <button class="btn btn-success" (click)="hideModal()"> NO </button>
+            </div>
+
             </table>   
     `,
   styleUrls : ['/styles/main.css'] 
@@ -44,6 +50,11 @@ export class MainPage implements OnInit,OnChanges {
     userName  : string; 
 
     anyTask : boolean = true;
+
+    isShowModal : boolean = false;
+    isShowInfo : boolean = true;
+
+    delTaskId : number;    
 
     constructor(private _mService : MainService,
                 private _lService : LoginService,
@@ -74,12 +85,14 @@ export class MainPage implements OnInit,OnChanges {
         
     }
     infoClick($event : any) {        
-        this._mService.taskInfoId = ($event.target.id);           
+        this._mService.taskInfoId = ($event.target.id);     
+        this._mService.showType = true;      
         this.router.navigateByUrl('/infoTask');         
     };
 
     addTask() {
-        this.router.navigateByUrl('/addTask');
+        this._mService.showType = false;      
+        this.router.navigateByUrl('/infoTask');
     };
 
     logOut() {
@@ -88,9 +101,15 @@ export class MainPage implements OnInit,OnChanges {
         this.router.navigateByUrl('/')        
     };
 
-    infoDel($event : any) {       
-        let tempX = ($event.target.id.split('+')[1] / 1); 
+    showModal(event : any) {
+         this.isShowInfo = false;
+         this.isShowModal = true;
+         this.delTaskId = event.target.id.split('+')[1] / 1;
+    }
 
+    infoDel() {       
+        let tempX = (this.delTaskId/1); 
+        
         this._mService.tasks[tempX] = "none";
         this._mService.taskCount -= 1;
 
@@ -104,6 +123,19 @@ export class MainPage implements OnInit,OnChanges {
         }
         else {
              this.anyTask = true;
-        }
+        };
+        this.isShowInfo = true;
+        this.isShowModal = false;
     };
+    trClick(event : any) {        
+        if (this.isShowInfo){
+        this._mService.taskInfoId = event.path[1].id.split('+')[1];         
+        this._mService.showType = true;    
+        this.router.navigateByUrl('/infoTask');  
+        } 
+    }
+    hideModal() {
+        this.isShowInfo = true;
+        this.isShowModal = false;
+    }
 }
