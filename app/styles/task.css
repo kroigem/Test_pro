@@ -1,0 +1,78 @@
+#taskPanel{
+    position: absolute;
+    width: 250px;
+    height: 400px;
+    left: 50%;
+    top: 30%;
+    margin-left: -125px;
+    margin-top: -200px;
+}
+textarea {
+    height: 150px;
+    resize: none;
+}
+#TdelModal{
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  top:50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -100px;
+  background-color: #FD9;
+  border-radius: 9px;
+}
+#TdelModal p {
+  width: 100%;
+  text-align:  center;
+}
+#TdelModal #mb1 {
+  position: absolute;
+  left: 10%;
+  width: 70px;
+}
+#TdelModal #mb2{
+  position: absolute;
+  left: 55%;
+  width: 70px;
+}
+#saveModal{
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  top:50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -100px;
+  background-color: #FD9;
+  border-radius: 9px;
+}
+#saveModal p {
+  width: 100%;
+  text-align:  center;
+}
+#saveModal #sb1 { 
+  position: absolute;
+  left: 10%;
+  width: 70px;
+}
+#saveModal #sb2{
+  position: absolute;
+  left: 55%;
+  width: 70px;
+}
+#taskBack{
+  position: absolute;
+  left: 35%;
+  top: 98%;
+}
+#taskSave{
+  position: absolute;
+  left: 65%;
+  top: 98%;
+}
+#taskDel{
+  position: absolute;
+  left: 90%;
+  top: 98%;
+}

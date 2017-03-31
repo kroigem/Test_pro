@@ -3,33 +3,33 @@ import { Injectable } from '@angular/core';
 @Injectable()
 
 export class LoginService{
+    constructor() {};
+    currentUser = new User();
+};
+    
 
-    public CurrentUser : User;
-    constructor() {        
-            this.CurrentUser = new User();                     
-        };
+class User{
+    userName : string;
+    userPass : string;
+    constructor () {
+        this.userName = "admin";
+        this.userPass = "admin";
+    };
 
-//0 - login err
-//1 - pass err
-//2 - ok
-    toLog (userLogin : string, userPassword : string) : number {        
-       
-        if (userLogin != this.CurrentUser.login) {return 0;}
-        else {
-            if (userPassword != this.CurrentUser.pass){
-                return 1;
-            }
-            else {
+// 0 - login err
+// 1 - pass err
+// 2 - ok
+    allowLog(login : string , pass : string) : number {
+        if (login == this.userName) {
+            if (pass == this.userPass) {
                 return 2;
             }
-        }  
+            else {
+                return 1;
+            }
+        }
+        else {
+            return 0;
+        }
     }
-}
-    class User{
-       login : string;
-       pass : string; 
-       constructor (){
-           this.login = "admin";
-           this.pass = "admin";
-       }
-    }
+};       
