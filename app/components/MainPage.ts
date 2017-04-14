@@ -6,18 +6,20 @@ import { MainService } from '../services/MainService';
 @Component({
   selector : 'page-main',
   template : `    
+
             <header>
-              <p id="mainHName">User : {{_mSrv.loginedUser}} </p>
+              <p id="mainHName">Здравстуйте, {{_mSrv.loginedUser}} </p>
               <button id="mainHBut" class="btn btn-info" (click)="logOut()"> Log out </button>
             </header>
-                         
+                      
             <button  class="mainAddTask btn btn-info" (click)="toTask(1,$event)" id="0" *ngIf="!empty"> Add task </button> 
-            
-            <table>
+      
+          <div class="table-responsive">
+            <table class="simple-little-table">
               <tr id="tabHead">
                 <th> Name </th> 
                 <th> Date </th>
-                <th> Active </th>
+                <th> Priority </th>
                 <th> Info </th>
                 <th> Change </th>
                 <th> Delete </th>
@@ -25,19 +27,20 @@ import { MainService } from '../services/MainService';
               <tr *ngFor="let c of _mSrv.tasks" id="{{c.id}}" (click)="toTask(0,$event)">
                 <th [style.color]="c.textColor">{{c.name}}</th>
                 <th>{{c.date}}</th>
-                <th><input type="checkbox" checked={{c.active}}/></th>
+                <th><p class="prio">{{c.priority}}</p></th>
                 <th><button class="btn btn-info" title="Последнее изменение: \n{{c.changeDate}}" (click)="toTask(0,$event)" id="{{c.id}}">Info</button></th>
                 <th><button class="btn btn-warning" (click)="toTask(2,$event)" id="{{c.id}}">Change</button></th>
                 <th><button class="btn btn-danger" (click)="showModal($event)" id="{{c.id}}" >X </button></th>
               </tr>   
               <button *ngIf="empty" class="btn btn-info" (click)="toTask(1,$event)"> Add first task </button>             
             </table>            
-          
+        </div>
             <div id="delModal" *ngIf="isShowDelModal">
               <p> Do you want to delete this? </p>
               <button (click)="delTask()" id="mb1" class="btn btn-danger"> Yes </button>
               <button (click)="hideModal()" id=mb2 class="btn btn-success"> No </button>
-            </div>           
+            </div>          
+               
             
     `,
   styleUrls : ['./app/styles/main.css'] 
@@ -47,10 +50,11 @@ export class MainPage implements OnInit {
   empty : boolean = false;
   deleteId : number = -1;
   isShowTI : boolean = true;
-  
+
+    
 //////////////////////////////////////// 
   constructor (private _mSrv  : MainService,
-               private router : Router
+               private router : Router               
                ) {};
   ngOnInit() {
     if (this._mSrv.loginedUser == "") {
@@ -61,6 +65,7 @@ export class MainPage implements OnInit {
 
   logOut() {
     this._mSrv.loginedUser = "";
+    sessionStorage.setItem('ID',"");
     this.router.navigateByUrl('');
   };
 // 0 - info
@@ -91,4 +96,6 @@ export class MainPage implements OnInit {
     this.isShowDelModal = false;  
     this.isShowTI = true;
   };
+
+
 };

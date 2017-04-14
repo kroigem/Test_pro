@@ -88,7 +88,7 @@ export class TaskPage implements OnInit{
 
    changeTask() {
     if (this._mSrv.taskPageType == 1){
-      this._mSrv.addTask(this.taskName, this.taskDate, this.taskActive, this.taskInfo);
+      this._mSrv.addTask(this.taskName, this.taskDate, this.taskActive, this.taskInfo,0);
       this.router.navigateByUrl('/mainPage');
     };  
     if (this._mSrv.taskPageType == 2){
