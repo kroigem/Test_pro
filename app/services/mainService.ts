@@ -33,8 +33,7 @@ export class MainService {
     };
 
     makeRequest() {
-   // this.http.request("http://webapinetweb.azurewebsites.net/api/request/"+ sessionStorage.getItem("ID")+ "/"; )
-      this.http.request("http://localhost:81/"+ sessionStorage.getItem("ID")+ "/")
+      this.http.request("http://webapinetweb.azurewebsites.net/api/request/"+ sessionStorage.getItem("ID")+ "/")
           .subscribe((res: Response) => {
           for ( let i = 0; i< res.json().length; i++){
              let re = res.json()[i];

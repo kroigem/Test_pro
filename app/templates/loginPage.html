@@ -1,0 +1,19 @@
+ <header>
+                <img src="app/styles/pics/load.png">
+                <p> Регистрация </p>
+                <p id="hp1" (click)="GoMainPage()"> Выполнить вход </p>    
+              </header>  
+              
+              <h1>Выполнить вход </h1>
+              <h4>Используйте локальную учетную запись для входа </h4>       
+              <div id="loginForm">    
+                <p id="hp0">Адрес электронной почты </p>
+                <input type="text" id="loginName" required placeholder="Your Login" [(ngModel)]="userLogin" (keydown) ="toKLog($event)" />
+                <p> Пароль </p>
+                <input type="password" id="loginPass" required placeholder="Your password" [(ngModel)]="userPassword" (keydown) ="toKLog($event)"/>                  
+                <p id="errMessage">{{loginError}}</p>  
+                <button id = "loginBut" class="btn btn-primary" [disabled]="!userLogin&&!userPassword" (click)="toLog()"> Выполнить вход </button>
+              <button class="btn btn-link" id="regBut"> Регистрация нового пользователя </button>                                     
+              
+              </div>                 
+              <footer>© 2017 -.Net Team </footer>    

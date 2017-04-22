@@ -1,0 +1,21 @@
+<div id="taskPanel">
+              <button id="taskBack" (click)="taskBack()" class="btn btn-info">Cancel</button>
+              <p> Task name: </p><input type="text" id="taskName" [disabled]="isInfo" [(ngModel)]="taskName">
+              <p> Task date: </p><input type="date" id="taskDate" [disabled]="isInfo" [(ngModel)]="taskDate">
+              <p> Task active: </p><input type="checkbox" id="taskActive" [disabled]="isInfo" [checked]="taskActive">
+              <p> Task info: </p><textarea id="taskInfo" [disabled]="isInfo" [(ngModel)]="taskInfo"></textarea>
+              <button id="taskSave" (click)="showSModal()"*ngIf="showSaveBut" class="btn btn-success">Save</button>
+              <button id="taskDel" (click)="showDModal()" *ngIf="showDelBut" class="btn btn-danger">X</button>              
+            </div>
+            
+            <div id="TdelModal" *ngIf="isShowDelModal">
+              <p> Are you sure? </p>
+              <button (click)="taskD()" class="btn btn-danger" id="mb1"> Yes </button>
+              <button (click)="hideDModal()" class="btn btn-success" id="mb2"> No </button>
+            </div>
+
+            <div id="saveModal" *ngIf="isShowSavModal">
+              <p> Are you sure? </p>
+              <button (click)="changeTask()" class="btn btn-danger" id="sb1"> Yes </button>
+              <button (click)="hideSModal()" class="btn btn-success" id="sb2"> No </button>
+            </div>
